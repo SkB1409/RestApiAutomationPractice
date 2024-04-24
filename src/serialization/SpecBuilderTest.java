@@ -52,9 +52,9 @@ public class SpecBuilderTest {
 
 		// log().all().statusCode(200)
 
-		RequestSpecification request = given().spec(req).body(a);
+		RequestSpecification request = given().log().all().spec(req).body(a);
 
-		Response response = request.when().post("maps/api/place/add/json").then().spec(resp).extract().response();
+		Response response = request.when().post("maps/api/place/add/json").then().log().all().spec(resp).extract().response();
 
 		String responseString = response.asString();
 		System.out.println(responseString);
